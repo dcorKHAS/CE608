@@ -14,10 +14,27 @@ void Graph::addEdge(int v, int w) {
     representation->addEdge(v, w);
 }
 
+
+void Graph::addEdge(int v, int w, double weight)
+{
+	representation->addEdge(v, w, weight);
+}
 void Graph::removeEdge(int v, int w) {
     representation->removeEdge(v, w);
 }
 
+const std::vector<int>& Graph::getNeighbors(int v) const
+{   
+    //std::cout << "Graph::getNeighbors(int v) const" << std::endl;
+
+
+	return representation->getNeighbors(v);
+}
+
+int Graph::getNumVertices() const
+{
+	return representation->getNumVertices();
+}
 
 
 bool Graph::isEmpty() const {
@@ -174,5 +191,11 @@ void Graph::DFSUtil(int v, std::unordered_set<int>& visited) const {
 		DFSUtil(neighbor, visited);
 	}
 
+
+}
+
+double Graph::getWeight(int i, int j) const {
+
+    return representation->getWeight(i, j);
 
 }

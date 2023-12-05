@@ -8,8 +8,21 @@
 class Graph {
 public:
     explicit Graph(std::unique_ptr<GraphRepresentation> representation);
+    //explicit means that the constructor can only be called explicitly
+    //which means that you can't do something like this:
+    //Graph g = new Graph();
+    //You have to do this:
+    //Graph g(new Graph());
+    //or this:
+    //Graph g = Graph(new Graph());
+    //or this:
+    //Graph g = std::make_unique<Graph>(new Graph());
+    //or this:
+    //Graph g(std::make_unique<Graph>());
+    
 
     void addEdge(int v, int w);
+    void addEdge(int v, int w, double weight);
     void removeEdge(int v, int w);
     bool isConnected() const;
     bool isCyclic() const;
@@ -19,7 +32,11 @@ public:
     int getDegree(int v) const;
     void saveToFile(const std::string& filename) const;
     void loadFromFile(const std::string& filename);
-    
+    double getWeight(int v, int w) const;
+    int getNumVertices() const;
+    const std::vector<int>& getNeighbors(int v) const;
+
+
     //Utility methods
     bool isCyclicUtil(int v, std::unordered_set<int>& visited, int parent) const;
     void DFSUtil(int v, std::unordered_set<int>& visited) const;

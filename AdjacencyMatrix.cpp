@@ -1,16 +1,21 @@
 #include "AdjacencyMatrix.h"
 #include <stdexcept>
 
-AdjacencyMatrix::AdjacencyMatrix(int numVertices) : matrix(numVertices, std::vector<bool>(numVertices, false)) {}
+AdjacencyMatrix::AdjacencyMatrix(int numVertices) : matrix(numVertices, std::vector<double>(numVertices, 0.0)) {}
 
 void AdjacencyMatrix::addEdge(int v, int w) {
-    matrix[v][w] = true;
-    matrix[w][v] = true; // If undirected graph
+    matrix[v][w] = 1.0;
+   // matrix[w][v] = true; // If undirected graph
+}
+void AdjacencyMatrix::addEdge(int v, int w, double weight) {
+    matrix[v][w] = weight;
+    // matrix[w][v] = true; // If undirected graph
 }
 
+
 void AdjacencyMatrix::removeEdge(int v, int w) {
-    matrix[v][w] = false;
-    matrix[w][v] = false; // If undirected graph
+    matrix[v][w] = 0.0;
+   // matrix[w][v] = false; // If undirected graph
 }
 
 const std::vector<int>& AdjacencyMatrix::getNeighbors(int v) const {
@@ -49,6 +54,10 @@ std::vector<int> AdjacencyMatrix::getVertices() const {
 
 void AdjacencyMatrix::clear() {
     for (auto& row : matrix) {
-        std::fill(row.begin(), row.end(), false);
+        std::fill(row.begin(), row.end(), 0.0);
     }
+}
+
+double AdjacencyMatrix::getWeight(int i, int j) const {
+	return matrix[i][j];
 }

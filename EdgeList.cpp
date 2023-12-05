@@ -4,12 +4,12 @@
 
 void EdgeList::addEdge(int v, int w) {
     edges.emplace_back(v, w);
-    edges.emplace_back(w, v); // If undirected graph
+   // edges.emplace_back(w, v); // If undirected graph
 }
 
 void EdgeList::removeEdge(int v, int w) {
     edges.erase(std::remove(edges.begin(), edges.end(), std::make_pair(v, w)), edges.end());
-    edges.erase(std::remove(edges.begin(), edges.end(), std::make_pair(w, v)), edges.end()); // If undirected graph
+   // edges.erase(std::remove(edges.begin(), edges.end(), std::make_pair(w, v)), edges.end()); // If undirected graph
 }
 
 const std::vector<int>& EdgeList::getNeighbors(int v) const {

@@ -132,6 +132,7 @@
     <ClInclude Include="EdgeList.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphRepresentation.h" />
+    <ClInclude Include="MSTProblem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdjacencyList.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="EdgeList.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MSTProblem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
