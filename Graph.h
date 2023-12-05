@@ -19,8 +19,13 @@ public:
     int getDegree(int v) const;
     void saveToFile(const std::string& filename) const;
     void loadFromFile(const std::string& filename);
+    
+    //Utility methods
     bool isCyclicUtil(int v, std::unordered_set<int>& visited, int parent) const;
-
+    void DFSUtil(int v, std::unordered_set<int>& visited) const;
+    //We'll implement this one
+    void BFSUtil(int v) const;
+    //We'll implement this one
     // ... Other methods ...
 
 private:

@@ -5,7 +5,9 @@
 #include <fstream>
 #include <sstream>
 #include <stack>
-
+#include <vector>
+#include <unordered_set>
+#include <queue>
 Graph::Graph(std::unique_ptr<GraphRepresentation> rep) : representation(std::move(rep)), isDirectedGraph(false) {}
 
 void Graph::addEdge(int v, int w) {
@@ -115,4 +117,62 @@ void Graph::loadFromFile(const std::string& filename) {
 }
 bool Graph::isDirected() const {
     return isDirectedGraph;
+}
+
+void Graph::BFSUtil(int v) const {
+
+    //create a set of visited vertices
+    std::unordered_set<int> visited;
+
+    //create a queue
+    std::queue<int> queue;
+
+    //add v to queue
+	queue.push(v);
+    visited.insert(v);
+    //loop if queue not empty
+    while(!queue.empty()){
+        //v = queue.pop
+        v = queue.front();
+
+        std::cout<<std::endl << v<<" " << std::endl;
+
+        // Visit all neighbours of v
+        for (int neighbor : representation->getNeighbors(v)) {
+
+                //If not visited
+                
+            if (visited.find(neighbor) == visited.end()) {
+					//push into the queue
+					queue.push(neighbor);
+					//mark as visited
+					visited.insert(neighbor);
+                    //process the vertex//
+                    
+                    std::cout << neighbor << " ";
+				}
+         
+        }
+		//remove v from queue
+		queue.pop();
+	}
+
+
+
+}
+
+void Graph::DFSUtil(int v, std::unordered_set<int>& visited) const {
+
+    if (visited.find(v) != visited.end()) {
+		return;
+	}
+    
+    visited.insert(v);
+    std::cout << v << " ";
+
+    for (int neighbor : representation->getNeighbors(v)) {
+		DFSUtil(neighbor, visited);
+	}
+
+
 }
