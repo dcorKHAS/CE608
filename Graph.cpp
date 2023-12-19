@@ -9,6 +9,7 @@
 #include <unordered_set>
 #include <queue>
 Graph::Graph(std::unique_ptr<GraphRepresentation> rep) : representation(std::move(rep)), isDirectedGraph(false) {}
+//Here we use the move constructor to move the unique pointer to the representation of the graph in order to avoid copying the graph
 
 void Graph::addEdge(int v, int w) {
     representation->addEdge(v, w);

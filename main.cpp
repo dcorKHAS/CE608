@@ -26,6 +26,7 @@ int main() {
     MSTProblem mst(&g);
     std::cout << "MST weight: " << mst.Prim() << std::endl;
 
+    std::cout << "MST weight: " << mst.Kruskal() << std::endl;
 
 
 
